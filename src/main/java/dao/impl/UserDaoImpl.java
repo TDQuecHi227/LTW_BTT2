@@ -14,7 +14,7 @@ public class UserDaoImpl implements UserDao {
     public ResultSet rs = null;
     @Override
     public User get(String username) {
-        String sql = "SELECT * FROM [User] WHERE username = ? ";
+        String sql = "SELECT * FROM users WHERE username = ? ";
         try {
             conn = new ConnectionMySQL().getConnection();
             ps = conn.prepareStatement(sql);

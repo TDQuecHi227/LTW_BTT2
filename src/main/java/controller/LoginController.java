@@ -9,25 +9,31 @@ import service.impl.UserServiecImpl;
 
 import java.io.IOException;
 
-    @SuppressWarnings("serial")
     @WebServlet(urlPatterns = "/login")
     public class LoginController extends HttpServlet {
-        public static final String SESSION_USERNAME = "username";
         public static final String COOKIE_REMEMBER = "username";
         @Override
-        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
-                ServletException, IOException {
+        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             HttpSession session = req.getSession(false);
             if (session != null && session.getAttribute("account") != null) {
                 resp.sendRedirect(req.getContextPath() + "/waiting");
                 return;
             }
+            // Check cookie
+            Cookie[] cookies = req.getCookies();
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("username")) {
+                        session = req.getSession(true);
+                        session.setAttribute("username", cookie.getValue());
+                        resp.sendRedirect(req.getContextPath()+ "/waiting");
+                        return;
+                    }}}
+            req.getRequestDispatcher("views/login.jsp").forward(req, resp);
         }
         @Override
         protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             resp.setContentType("text/html");
-            resp.setCharacterEncoding("UTF-8");
-            req.setCharacterEncoding("UTF-8");
             String username = req.getParameter("username");
             String password = req.getParameter("password");
             boolean isRememberMe = false;
