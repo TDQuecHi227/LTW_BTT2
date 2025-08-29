@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Tran Anh Huy
-  Date: 11/2/2024
-  Time: 12:45 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
