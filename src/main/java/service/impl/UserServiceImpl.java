@@ -3,9 +3,9 @@ package service.impl;
 import dao.UserDao;
 import dao.impl.UserDaoImpl;
 import model.User;
-import service.UserServiec;
+import service.UserService;
 
-public class UserServiecImpl implements UserServiec {
+public class UserServiceImpl implements UserService {
     UserDao userDao = new UserDaoImpl();
 
     @Override

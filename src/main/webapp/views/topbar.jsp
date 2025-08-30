@@ -30,6 +30,7 @@
                 <li><i class="search fa fa-search search-button"></i></li>
             </ul>
         </div>
-    </c:otherwise></c:choose>
+    </c:otherwise>
+</c:choose>
 </body>
 </html>

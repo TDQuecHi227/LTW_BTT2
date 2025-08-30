@@ -4,8 +4,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import model.User;
-import service.UserServiec;
-import service.impl.UserServiecImpl;
+import service.UserService;
+import service.impl.UserServiceImpl;
 
 import java.io.IOException;
 
@@ -49,7 +49,7 @@ import java.io.IOException;
                 req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
                 return;
             }
-            UserServiec service = new UserServiecImpl();
+            UserService service = new UserServiceImpl();
             User user = service.login(username, password);
             if(user!=null){
                 HttpSession session = req.getSession(true);
